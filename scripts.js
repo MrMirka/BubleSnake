@@ -57,7 +57,6 @@ function init(){
                     torusMaterial.roughness = 0;
                     torusMaterial.normalMap = normals;
                     torusMaterial.normalScale = new THREE.Vector2(3.3, 3.3);
-                    torusMaterial.needsUpdate = true;
                 }
         });
         scene.add(ring);
