@@ -54,10 +54,9 @@ function init(){
                     torusMaterial.envMap = texture;
                     torusMaterial.envMapIntensity = 0.6;
                     torusMaterial.metalness = 0.45;
-                    //torusMaterial.roughnessMap = texture;
                     torusMaterial.roughness = 0;
                     torusMaterial.normalMap = normals;
-                    torusMaterial.normalScale = new THREE.Vector2(0.3, 0.3);
+                    torusMaterial.normalScale = new THREE.Vector2(3.3, 3.3);
                     torusMaterial.needsUpdate = true;
                 }
         });
