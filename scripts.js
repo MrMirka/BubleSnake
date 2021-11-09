@@ -52,9 +52,10 @@ function init(){
                 if(node.material) {
                     torusMaterial = node.material;
                     torusMaterial.envMap = texture;
-                    torusMaterial.envMapIntensity = 1;
+                    torusMaterial.envMapIntensity = 0.6;
                     torusMaterial.metalness = 0.45;
-                    torusMaterial.roughnessMap = texture;
+                    //torusMaterial.roughnessMap = texture;
+                    torusMaterial.roughness = 0;
                     torusMaterial.normalMap = normals;
                     torusMaterial.normalScale = new THREE.Vector2(0.3, 0.3);
                     torusMaterial.needsUpdate = true;
@@ -92,18 +93,19 @@ function animate(){
 
 function render(){
     timer = Date.now() * 0.0003;
-    camera.position.x = Math.cos(timer ) * 5 ;
-    camera.position.z = Math.sin(timer ) * 5;
+    camera.position.x = Math.cos(timer *0.5) * 5 ;
+    camera.position.z = Math.sin(timer * 0.5) * 5;
     //camera.position.y = Math.abs(Math.sin(timer) * 5);
 
     //camera.position.x += ( mouseX - camera.position.x ) * .05;
 	//camera.position.y += ( - mouseY - camera.position.y ) * .05;
     camera.lookAt(0,0,0);
 
-    normalCount = Math.sin(timer * 0.7) * 5 + 3 ;
+    normalCount = Math.sin(timer * 0.17) * 2 + 5 ;
     if(torusMaterial != undefined){
-        torusMaterial.metalness = Math.abs(Math.sin(timer) + 0.2);
-        //torusMaterial.normalMap.repeat.set(normalCount,normalCount);
+        torusMaterial.metalness = Math.abs(Math.sin(timer) - 0.2);
+        torusMaterial.roughness = Math.abs(Math.cos(timer) + 0.2);
+        torusMaterial.normalMap.repeat.set(normalCount,normalCount);
         torusMaterial.normalMap.rotation += 0.001;
     }
 
